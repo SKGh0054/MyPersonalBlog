@@ -1,4 +1,5 @@
 const express = require("express")
+const path = require("path");
 
 const app = express()  // 创建服务器
 const port = 7777  // 服务器端口
@@ -35,15 +36,9 @@ app.use("/api", require("./src/routers/ArticleCommentsRouter.js"))  // articleCo
 
 
 app.get("/api", (req, res) => {
-    const html = `
-        <h1>测试路由: http://localhost:${port}/api/test </h1>
-        <h1>tags路由: http://localhost:${port}/api/tags </h1>
-        <h1>article路由: http://localhost:${port}/api/article</h1>
-        <h1>category路由: http://localhost:${port}/api/category</h1>
-        <h1>token路由: http://localhost:${port}/api/token</h1>
-        <h1>user路由: http://localhost:${port}/api/user</h1>
-    `
-    res.send(html)
+
+    res.sendFile(path.join(__dirname, "/public/link.html"));
+
 })
 
 app.listen(port, () => {
