@@ -11,7 +11,7 @@
  Target Server Version : 80032
  File Encoding         : 65001
 
- Date: 15/04/2023 19:26:26
+ Date: 01/05/2023 18:57:34
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `article`  (
   `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 59 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 64 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
@@ -47,6 +47,31 @@ INSERT INTO `article` VALUES (60, 'Django', 'admin', '2023-04-07T16:00:00.000Z',
 INSERT INTO `article` VALUES (61, 'Flask', 'admin', '2023-03-31T16:00:00.000Z', '2023-04-21T16:00:00.000Z', 'Python Flask 介绍', '轻量级 易用性 可扩展性 灵活性 集成度高 RESTful支持', 'Python Flask是一个轻量级的Web应用程序框架，它是使用Python编写的，用于快速开发Web应用程序和API。它的设计理念是简单、易用和可扩展。', '一、概述\nPython Flask是一个轻量级的Web应用程序框架，它是使用Python编写的，用于快速开发Web应用程序和API。它的设计理念是简单、易用和可扩展。\n以下是Python Flask的一些主要特点：\n\n\n轻量级：Flask没有多余的库和工具包，使其非常轻量级，这也意味着您可以根据需要添加自己的库。\n\n\n易用性：Flask的API非常简单，易于理解和学习，因此它非常适合初学者。\n\n\n可扩展性：Flask是可扩展的，您可以添加插件来增强其功能，并且可以很容易地将其与其他库和框架集成。\n\n\n灵活性：Flask允许您选择所需的组件，例如模板引擎、数据库、表单验证等等。\n\n\n集成度高：Flask支持与其他Python库和框架的集成，如SQLAlchemy、WTForms、Jinja2等等。\n\n\nRESTful支持：Flask易于使用RESTful API，并且可以轻松地创建RESTful Web服务。\n\n\n总之，Python Flask是一个功能强大、易于使用、可扩展和灵活的Web框架，它被广泛应用于Web应用程序和API的开发。\n官网：flask.net.cn/\n二、Flask 架构\nFlask 是一个使用 Python 编写的 Web 应用程序框架。它使用了 Werkzeug 工具箱和 Jinja2 模板引擎。\nFlask 框架主要由以下模块组成：\n\n应用模块：Flask 的核心模块，是整个 Web 应用程序的入口，负责接收 HTTP 请求并返回响应。它还负责路由、错误处理、上下文等功能。\n\n\n路由模块：Flask 使用装饰器来定义 URL 路由和视图函数之间的映射关系。\n\n\n视图模块：视图函数是 Flask Web 应用程序的核心，它处理 HTTP 请求并返回响应，可以返回 HTML 页面、JSON 数据等。\n\n\n模板模块：Flask 使用 Jinja2 模板引擎来生成 HTML 页面。模板引擎提供了丰富的语法和过滤器，可以轻松地生成复杂的 HTML 页面。\n\n\n数据库模块：Flask 可以轻松地与多种数据库集成，包括 MySQL、PostgreSQL、SQLite 等。\n\n\n表单模块：Flask-WTF 是 Flask 的表单处理扩展，提供了方便的表单处理方法，可以轻松地创建表单、验证表单数据等。\n\n\n扩展模块：Flask 的扩展模块提供了各种功能，如邮件发送、缓存、登录认证等。\n\n\nFlask 的设计理念是简单、灵活、易于扩展，它不会限制开发者的选择，可以根据开发者的需求选择各种第三方扩展来增加功能。同时，Flask 也提供了一些基础的功能和工具，方便开发者快速搭建 Web 应用程序。\n三、应用模块\n应用模块是 Flask 框架的核心模块之一，它负责创建 Flask 应用程序对象，并定义一些应用程序级别的配置和功能。应用模块通常包括以下内容：\n\n\n创建应用程序对象：使用 Flask 类创建应用程序对象。Flask 类的构造函数需要传入应用程序的名称作为参数。\n\n\n配置应用程序：可以使用 config 属性来配置应用程序的基本属性，如调试模式、密钥、数据库连接等。\n\n\n注册路由：使用 route 装饰器来注册 URL 路由和视图函数之间的映射关系。路由定义了 HTTP 请求的 URL 地址和视图函数之间的映射关系。\n\n\n定义视图函数：视图函数是处理 HTTP 请求的函数，可以返回 HTML 页面、JSON 数据等。视图函数通常使用 route 装饰器定义 URL 路由。\n\n\n上下文管理：Flask 应用程序使用上下文对象来管理请求上下文和应用上下文。请求上下文包含了每个 HTTP 请求的相关信息，如请求头、请求参数等。应用上下文包含了应用程序的相关信息，如配置信息、数据库连接等。\n\n\n错误处理：Flask 应用程序可以通过注册错误处理函数来处理 HTTP 请求中出现的错误，如 404 错误、500 错误等。\n\n\n扩展管理：Flask 应用程序可以通过注册扩展对象来增加应用程序的功能，如数据库连接、缓存、邮件发送等。\n\n\n启动应用程序：通过 run 方法启动应用程序，使其可以接收 HTTP 请求。\n\n\n应用模块是 Flask 应用程序的核心模块之一，它负责管理整个应用程序的生命周期，是开发 Flask Web 应用程序的重要组成部分。\n\n四、路由模块\n路由模块是 Flask 应用程序的核心组成部分之一，它实现了 URL 路由和视图函数之间的映射关系。在 Flask 中，我们可以通过定义路由模块来为应用程序添加不同的路由规则，使得应用程序可以响应不同的 URL 请求。\n在 Flask 中，可以使用装饰器来定义路由模块。常用的装饰器包括：\n\n@app.route(rule, options)：定义路由规则和处理函数之间的映射关系。其中 rule 参数表示路由规则，options 参数表示路由的配置选项。\n');
 INSERT INTO `article` VALUES (62, 'pinia', 'admin', '2023-04-06T16:00:00.000Z', '2023-04-21T16:00:00.000Z', 'pinia 简介与简单使用', 'Pinia Vuex5.0 Eduardo vue.js composition api', 'Pinia是一款全新的状态管理库（下一个版本的Vuex,   应该是Vuex5.0）。Pinia的作者(Eduardo)是vue.js的核心成员，目前Pinia已经被vue官方仓库接管了。Pinia最初是个实验，目的是重新设计Vue状态管理在composition api上的样子', '介绍\nPinia是一款全新的状态管理库（下一个版本的Vuex,   应该是Vuex5.0）。Pinia的作者(Eduardo)是vue.js的核心成员，目前Pinia已经被vue官方仓库接管了。Pinia最初是个实验，目的是重新设计Vue状态管理在composition api上的样子。（提案链接 github.com/vuejs/rfcs/…\nPinia的特点\n\n同时支持Vue2和Vue3\n\n除了安装和ssr配置外，两者的api都是相同的\n文档主要针对Vue3进行说明，必要的时候会对Vue2注释\n\n\n支持Vue devtools\n\n跟踪action、mutations\n在使用容器的组件中就可以观察到容器本身\n支持time travel 调试功能\n在vue2中pinia使用vuex现有的接口，不能跟vuex同时使用\nvue3中的调试工具还不够完美，比如还没有time-travel调试功能\n\n\n模块热更新\n\n修改容器无须重新加载页面\n热更新的时候保持原有状态\n\n\n支持使用插件拓展Pinia功能\n比vuex有更好的typescript 支持，使用过程非常舒服\n支持服务端渲染\n使用方式跟vuex基本上相似\n\nPinia没有mutation，在action中既可以是异步，也可以是同步的。\n没有模块嵌套功能，没有命名空间模块\n不再需要注入、导入函数，调用他们享受自动补全\n无须动态添加store\n无论是使用方式，还是调试都非常方便');
 INSERT INTO `article` VALUES (63, 'axios', 'admin', '2023-04-10T16:00:00.000Z', '2023-04-19T16:00:00.000Z', 'axios全攻略', 'vue-resource axios 官方文档', 'axios 的官方文档本身就非常详细！！有这个还要什么自行车！！所以推荐大家学习这种库，最好详细阅读其官方文档。大概翻译了一下 axios 的官方文档，相信大家只要吃透本文再加以实践，axios 就是小意思啦！！', '随着 vuejs 作者尤雨溪发布消息，不再继续维护vue-resource，并推荐大家使用 axios 开始，axios 被越来越多的人所了解。本来想在网上找找详细攻略，突然发现，axios 的官方文档本身就非常详细！！有这个还要什么自行车！！所以推荐大家学习这种库，最好详细阅读其官方文档。大概翻译了一下 axios 的官方文档，相信大家只要吃透本文再加以实践，axios 就是小意思啦！！\n\n如果您觉得本文对您有帮助，不妨点个赞或关注收藏一下，您的鼓励对我非常重要。\n\naxios 简介\naxios 是一个基于Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：\n\n从浏览器中创建 XMLHttpRequest\n从 node.js 发出 http 请求\n支持 Promise API\n拦截请求和响应\n转换请求和响应数据\n取消请求\n自动转换JSON数据\n客户端支持防止 CSRF/XSRF');
+
+-- ----------------------------
+-- Table structure for article_comments
+-- ----------------------------
+DROP TABLE IF EXISTS `article_comments`;
+CREATE TABLE `article_comments`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `article_id` int NOT NULL,
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `pub_date` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of article_comments
+-- ----------------------------
+INSERT INTO `article_comments` VALUES (1, 58, '管理员', '这篇文章非常好！', '2023-04-21T16:00:00.000Z');
+INSERT INTO `article_comments` VALUES (2, 58, '管理员', '很棒的文章', '2023-04-19T16:00:00.000Z');
+INSERT INTO `article_comments` VALUES (3, 59, '管理员', '太好了', '2023-04-14T16:00:00.000Z');
+INSERT INTO `article_comments` VALUES (4, 58, '张三', '测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1测试评论1', '2023-04-15T16:00:00.000Z');
+INSERT INTO `article_comments` VALUES (5, 58, '李四', '测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二测试评论二', '2023-04-19T16:00:00.000Z');
+INSERT INTO `article_comments` VALUES (6, 58, '管理员', '测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三测试评论三', '2023-05-01T09:46:55.936Z');
+INSERT INTO `article_comments` VALUES (7, 58, '管理员', 'status', '2023-05-01T09:47:23.726Z');
+INSERT INTO `article_comments` VALUES (15, 59, '管理员', '太棒了', '2023-05-01T09:59:55.627Z');
 
 -- ----------------------------
 -- Table structure for article_tags
@@ -87,7 +112,7 @@ CREATE TABLE `category`  (
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `parent_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of category
@@ -114,7 +139,7 @@ CREATE TABLE `category_article`  (
   INDEX `forgin_article_id`(`article_id`) USING BTREE,
   CONSTRAINT `forgin_article_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `forgin_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 33 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of category_article
@@ -171,5 +196,6 @@ INSERT INTO `user` VALUES (1, 'admin', '123456', '管理员', 'administrator');
 INSERT INTO `user` VALUES (2, 'zhangsan', '123456', '张三', 'consumer');
 INSERT INTO `user` VALUES (3, 'lisi', '123456', '李四', 'consumer');
 INSERT INTO `user` VALUES (4, 'wangwu', '123456', '王五', 'consumer');
+INSERT INTO `user` VALUES (136, '测试用户一', '123456', '测试用户一', 'administrator');
 
 SET FOREIGN_KEY_CHECKS = 1;
