@@ -83,5 +83,5 @@ export const useUserHook = () => {
         })
     }
 
-    return { loginModel, user, login, logout, loggedIn, registryModel, registrySuccess }
+    return { loginModel, user, login, logout, loggedIn, registryModel, registrySuccess,blogAdminUser }
 }

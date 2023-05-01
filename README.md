@@ -29,7 +29,7 @@
 * screenfull插件实现全屏功能。
 
 ### 使用
-**配置mysql数据库, 及使用blog.sql快速搭建数据库**
+**配置mysql数据库(将BackendInterface/src/db/DBUtils.js文件的nysql数据库配置修改为本机的数据库配置), 及使用blog.sql快速搭建数据库**
 ***
 **打开终端进入后端接口BackendInterface文件夹**
 ```

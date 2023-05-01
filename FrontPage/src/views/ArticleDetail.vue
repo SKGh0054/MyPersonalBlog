@@ -4,12 +4,16 @@
         <template #category>{{ article.category }}</template>
         <template #pubdate>{{ article.pub_date }}</template>
     </article-item>
+
+    <ArticleComments></ArticleComments>
+
 </template>
 
 <script setup>
 import { reactive, watch } from "vue"
 import { getArticleDetail } from "../api";
 import { useRoute } from "vue-router";
+import ArticleComments from "../components/ArticleComments.vue"
 
 const article = reactive({})
 const route = useRoute()

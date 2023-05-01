@@ -30,8 +30,8 @@ app.use("/api", require("./src/routers/ArticleRouter.js"))  // article路由
 app.use("/api", require("./src/routers/CategorysRouter.js"))  // category路由
 app.use("/api", require("./src/routers/TokenRouter.js"))  // token路由
 app.use("/api", require("./src/routers/UserRouter.js"))  // user路由
-
 app.use("/api", require("./src/routers/CategoryArticleMap.js"))  // category_article映射路由
+app.use("/api", require("./src/routers/ArticleCommentsRouter.js"))  // articleComments路由
 
 
 app.get("/api", (req, res) => {

@@ -79,3 +79,42 @@ export async function addConsumerUser(username, password, nickname) {
         }
     })
 }
+
+// 按文章id获取当前文章评论
+export async function getArticlecomments(article_id) {
+    return await request({
+        url: "/articlecomments/",
+        method: "post",
+        data:
+        {
+            "article_id": article_id,
+        }
+    })
+}
+
+// 添加某文章的评论
+export async function addArticlecomments(article_id, nickname, content, pub_date) {
+    return await request({
+        url: "/articlecommentsadd/",
+        method: "post",
+        data:
+        {
+            "article_id": article_id,
+            "nickname": nickname,
+            "content": content,
+            "pub_date": pub_date
+        }
+    })
+}
+
+// 删除某文章的某条评论 --- 管理员权限
+export async function deleteArticlecomments(id) {
+    return await request({
+        url: "/articlecommentsdelete/",
+        method: "post",
+        data:
+        {
+            "id": id
+        }
+    })
+}
