@@ -55,7 +55,7 @@ export const leftroutes = [
         component: () => import(/* webpackChunkName: "chart" */ "views/ElementPlus/ElementPlus.vue"),
         meta: {
             icon: 'element',
-            title: '组件相关'
+            title: '组件相关文档'
         }
     },
     {

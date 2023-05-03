@@ -1,4 +1,5 @@
 <template>
+  <span class="title">技术选择</span>
   <el-descriptions :column="3" border>
     <el-descriptions-item label="vue">^3.2.47</el-descriptions-item>
     <el-descriptions-item label="vite">^4.2.1</el-descriptions-item>
