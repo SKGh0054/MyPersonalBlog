@@ -16,7 +16,7 @@ export const useCategoryStore = defineStore('category', () => {
     async function apiCategory() {
         await getCategory().then(res => {
             if (res.status == 200) {
-                console.log(res.data);
+                // console.log(res.data);
                 categoryDatas.value = res.data
                 sessionStorage.setItem("CategoryDatas", JSON.stringify(res.data))  // 将从服务器请求的数据存储到本地sessionStorage
             }

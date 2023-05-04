@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <!-- 搜索框部分 -->
         <a-input-search v-model:value="SearchValue" placeholder="请输入歌曲名" enter-button @search="onSearch" />
 
@@ -46,6 +45,9 @@
             </template>
         </a-table>
 
+        <!-- 加载动画 -->
+        <a-spin v-if="loading" tip="歌曲加载中..." size="large"></a-spin>
+
         <!-- 播放器部分 -->
         <audio controls autoplay :src="musicURL" v-if="musicURL"></audio>
 
@@ -62,11 +64,14 @@ import { message } from "ant-design-vue";
 const SearchValue = ref("")
 const dataSource = ref()
 const musicURL = ref()
+const loading = ref(false)
+
 
 const stepClick = (row) => {
     musicUrlSearch(row.id)
 }
 
+// 表单表头
 const columns = [
     {
         name: '歌曲名',
@@ -84,7 +89,14 @@ const columns = [
     }
 ]
 
+// 搜索按钮点击事件
 const onSearch = () => {
+    dataSource.value = null
+    loading.value = true
+    if (SearchValue.value == "" || SearchValue.value == null) {
+        loading.value = false
+        return
+    }
     axios({
         method: "post",
         url: "https://autumnfish.cn/search",
@@ -93,14 +105,16 @@ const onSearch = () => {
         }
     }).then(res => {
         if (res.data.code == 200) {
-            console.log(res.data.result.songs);
             dataSource.value = res.data.result.songs
+            loading.value = false
         } else {
             message.warn("搜索歌曲失败！");
+            loading.value = false
         }
     });
 }
 
+// 歌曲播放事件
 const musicUrlSearch = (musicID) => {
     axios({
         method: "post",
@@ -111,7 +125,6 @@ const musicUrlSearch = (musicID) => {
     }).then(res => {
         if (res.data.code == 200) {
             musicURL.value = res.data.data[0].url
-            console.log(musicURL.value);
         } else {
             message.warn("播放歌曲失败！");
         }
@@ -128,5 +141,12 @@ const musicUrlSearch = (musicID) => {
 audio {
     margin-top: 25px;
     margin-left: 15px;
+}
+
+.ant-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 </style>

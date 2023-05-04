@@ -63,7 +63,6 @@ import { message } from "ant-design-vue";
 
 
 const { user, blogAdminUser } = useUserHook()
-console.log(blogAdminUser);
 const route = useRoute()
 const comments = ref([])
 const commentsValue = reactive({
