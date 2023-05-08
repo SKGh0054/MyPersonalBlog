@@ -130,22 +130,56 @@ router.post("/deletearticle", async (req, res) => {
     }
 })
 
-// 添加文章 --> 管理员权限
+// 添加文章 --> 管理员权限 -- 旧
+// router.post("/addarticle", async (req, res) => {
+//     let add_article_sql = `
+//         INSERT INTO article (id, category, author, add_date, pub_date, title, keywords, description, content)
+//         VALUES (null, '${req.body.category}', '${req.body.author}', '${req.body.add_date}', '${req.body.pub_date}', '${req.body.title}', '${req.body.keywords}', '${req.body.description}', '${req.body.content}');
+//     `
+//     let { err, results, fileds } = await db.async.query(add_article_sql)
+//     if (err == null) {
+//         let zizengID = await db.async.query("SELECT MAX(id) FROM article;")
+//         res.send({
+//             code: 200,
+//             msg: "添加文章成功",
+//             rows: results,
+//             maxID: zizengID.results[0]['MAX(id)']
+//         })
+//     } else {
+//         res.send({
+//             code: 500,
+//             msg: "添加文章失败"
+//         })
+//     }
+// })
+
+// 添加文章 --> 管理员权限 -- 新
 router.post("/addarticle", async (req, res) => {
-    let add_article_sql = `
-        INSERT INTO article (id, category, author, add_date, pub_date, title, keywords, description, content)
-        VALUES (null, '${req.body.category}', '${req.body.author}', '${req.body.add_date}', '${req.body.pub_date}', '${req.body.title}', '${req.body.keywords}', '${req.body.description}', '${req.body.content}');
+    const add_article_sql = `
+      INSERT INTO article (category, author, add_date, pub_date, title, keywords, description, content)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
     `
-    let { err, results, fileds } = await db.async.query(add_article_sql)
-    if (err == null) {
-        let zizengID = await db.async.query("SELECT MAX(id) FROM article;")
+    const values = [
+        req.body.category,
+        req.body.author,
+        req.body.add_date,
+        req.body.pub_date,
+        req.body.title,
+        req.body.keywords,
+        req.body.description,
+        req.body.content.replace(/'/g, "''"),
+    ]
+    try {
+        const { results } = await db.async.query(add_article_sql, values)
+        const zizengID = await db.async.query("SELECT LAST_INSERT_ID() as max_id;")
         res.send({
             code: 200,
             msg: "添加文章成功",
             rows: results,
-            maxID: zizengID.results[0]['MAX(id)']
+            maxID: zizengID.results[0]['max_id']
         })
-    } else {
+    } catch (error) {
+        console.error(error)
         res.send({
             code: 500,
             msg: "添加文章失败"
@@ -153,40 +187,85 @@ router.post("/addarticle", async (req, res) => {
     }
 })
 
-// 修改文章 --> 管理员权限
+// 修改文章 --> 管理员权限 -- 旧
+// router.post("/editarticle", async (req, res) => {
+//     let edit_article_sql = `
+//             UPDATE 
+//                 article 
+//             SET 
+//                 category='${req.body.category}', 
+//                 author='${req.body.author}', 
+//                 add_date='${req.body.add_date}', 
+//                 pub_date='${req.body.pub_date}', 
+//                 title='${req.body.title}', 
+//                 keywords='${req.body.keywords}', 
+//                 description='${req.body.description}', 
+//                 content='${req.body.content}' 
+//             WHERE id=${parseInt(req.body.id)};
+//         `
+
+//     let { err, results, fileds } = await db.async.query(edit_article_sql)
+//     if (err == null) {
+//         res.send({
+//             code: 200,
+//             msg: "修改文章成功",
+//             rows: results,
+//         })
+//     } else {
+//         res.send({
+//             code: 500,
+//             msg: "修改文章失败"
+//         })
+//     }
+
+
+// })
+
+// 修改文章 --> 管理员权限 -- 新
 router.post("/editarticle", async (req, res) => {
     let edit_article_sql = `
-            UPDATE 
-                article 
-            SET 
-                category='${req.body.category}', 
-                author='${req.body.author}', 
-                add_date='${req.body.add_date}', 
-                pub_date='${req.body.pub_date}', 
-                title='${req.body.title}', 
-                keywords='${req.body.keywords}', 
-                description='${req.body.description}', 
-                content='${req.body.content}' 
-            WHERE id=${parseInt(req.body.id)};
-        `
+        UPDATE 
+            article 
+        SET 
+            category=?, 
+            author=?, 
+            add_date=?, 
+            pub_date=?, 
+            title=?, 
+            keywords=?, 
+            description=?, 
+            content=? 
+        WHERE id=?;
+    `;
 
-    let { err, results, fileds } = await db.async.query(edit_article_sql)
-    if (err == null) {
+    let values = [
+      req.body.category,
+      req.body.author, 
+      req.body.add_date, 
+      req.body.pub_date, 
+      req.body.title, 
+      req.body.keywords, 
+      req.body.description, 
+      req.body.content, 
+      parseInt(req.body.id)
+    ];
+
+    try {
+        let { err, results, fileds } = await db.async.query(edit_article_sql, values);
         res.send({
             code: 200,
             msg: "修改文章成功",
             rows: results,
         })
-    } else {
+    } catch (error) {
+        console.error(error);
         res.send({
             code: 500,
             msg: "修改文章失败"
         })
     }
-
-
-})
-
+    
+});
 
 
 

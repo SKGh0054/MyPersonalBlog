@@ -27,4 +27,17 @@ db.async.query = (sql, params) => {
     })
 }
 
+// // 参数化查询封装
+// db.async.execute = (sql, params) => {
+//     return new Promise((resolve, reject) => {
+//         db.execute(sql, params, (err, results, fields) => {
+//             if (err) {
+//                 console.log("数据库连接失败！")
+//                 reject(err)
+//             }
+//             resolve({ results, fields })
+//         })
+//     })
+// }
+
 module.exports = { db }

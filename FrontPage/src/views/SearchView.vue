@@ -27,7 +27,11 @@ watch(
                 });
                 articleDatas.value = res.data
             } else {
-                message.info("没有查询到任何一篇文章!", 1.5)
+                if (newQuery?.search == undefined) {
+                    return
+                }else{
+                    message.info("没有查询到任何一篇文章!", 1.5)
+                }
             }
         })
     },

@@ -54,6 +54,10 @@ export default defineConfig(({ command, mode }) => {
           rewrite: (path) => path.replace(/^\/api/, "")
         }
       }
+    },
+    optimizeDeps: {  // markdown-it库调用了punycode库导致浏览器环境报错
+      // 使用了 optimizeDeps 属性来排除 punycode 模块，这意味着 punycode 不会被打包到你的代码中，而是在运行时由浏览器或 Node.js 环境自动加载。
+      exclude: ['punycode']
     }
   }
 })
